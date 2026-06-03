@@ -19,8 +19,10 @@ return new class extends Migration
             $table->date('tanggal_kembali')->nullable();
             $table->integer('jumlah_pinjam');
             $table->string('status');
-
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_alat')->references('id_alat')->on('alats')->onDelete('cascade');
         });
     }
 

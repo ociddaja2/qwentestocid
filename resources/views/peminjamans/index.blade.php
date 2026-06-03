@@ -33,6 +33,19 @@
     <div class="py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
+            <div class="mb-4 flex items-center gap-4">
+            <div class="col-md-3">
+                <select name="status" class="form-control">
+                    <option value="">-- Pilih Status --</option>
+                    <option value="Dikembalikan" {{ request('status') == 'Dikembalikan' ? 'selected' : '' }}>Tersedia</option>
+                    <option value="Dipinjam" {{ request('status') == 'Dipinjam' ? 'selected' : '' }}>Dipinjam</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="{{ route('alats.index') }}" class="btn btn-secondary">Reset</a>
+        </div>
+        </div>
             {{-- Flash Message --}}
             @if(session('success'))
                 <div class="mb-4 rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
@@ -47,8 +60,8 @@
                         <tr>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">No</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Nama Peminjam</th>
-                            <th class="px-4 py-3 text-left font-medium text-gray-500">Kelas</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Alat</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-500">Kelas</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Tgl Pinjam</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Tgl Kembali</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Status</th>
@@ -61,10 +74,10 @@
                             <td class="px-4 py-3 text-gray-400">{{ $loop->iteration }}</td>
                             <td class="px-4 py-3">
                                 <div class="font-medium text-gray-900">{{ $item->nama_peminjam }}</div>
-                                <div class="text-xs text-gray-400">{{ $item->user->name ?? '-' }}</div>
+                                <div class="text-xs text-gray-400">{{ $item->user->nama_peminjam ?? '-' }}</div>
                             </td>
-                            <td class="px-4 py-3 text-gray-700">{{ $item->kelas }}</td>
                             <td class="px-4 py-3 text-gray-700">{{ $item->alat->nama_alat ?? '-' }}</td>
+                            <td class="px-4 py-3 text-gray-700">{{ $item->user->kelas }}</td>
                             <td class="px-4 py-3 text-gray-700">
                                 {{ \Carbon\Carbon::parse($item->tanggal_pinjam)->format('d M Y') }}
                             </td>

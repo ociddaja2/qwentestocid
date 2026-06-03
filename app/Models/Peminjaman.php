@@ -20,11 +20,12 @@ class Peminjaman extends Model
 
     public function alat()
     {
-        return $this->belongsTo(Alat::class);
+        return $this->belongsTo(Alat::class, 'id_alat', 'id_alat');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
+ 
 }

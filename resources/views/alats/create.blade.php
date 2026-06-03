@@ -13,9 +13,6 @@
                     <div class="flex items-center justify-between">
                     <h2 class="text-2xl font-bold">Data Alat</h2>
 
-                    <a href="{{ route('alats.index') }}" class="underline">
-                            Kembali
-                        </a>
                     </div>
                     <form action="{{ route('alats.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -53,14 +50,11 @@
                             </select>
                         </div>
 
-                        <div class="mb-4">
-                            <label for="gambar" class="block text-gray-700 font-bold mb-2">Gambar:<span class="text-lg">(opsional)</span></label>
-
-                            <input type="file" name="gambar" id="gambar" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        </div>
-
                         <div class="flex items-center justify-between">
-                            <button type="submit" class="bg-blue-900 hover:bg-blue-700font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline border-2 text-white">
+                            <a href="{{ route('alats.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                Batal
+                            </a>
+                            <button type="submit" class="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline border-2">
                                 Simpan
                             </button>
                         </div>

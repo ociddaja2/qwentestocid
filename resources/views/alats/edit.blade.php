@@ -13,9 +13,6 @@
                     <div class="flex items-center justify-between">
                     <h2 class="text-2xl font-bold">Data Alat</h2>
 
-                    <a href="{{ route('alats.index') }}" class="underline">
-                            Kembali
-                        </a>
                     </div>
                     <form action="{{ route('alats.update', $alat->id_alat) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
@@ -62,8 +59,14 @@
                         <label class="block text-sm font-medium text-gray-700">Ganti Gambar Baru (Kosongkan jika tidak ingin diubah)</label>
                         <input type="file" name="gambar" class="mt-1 block w-full text-sm text-gray-500">
                     </div>
-
-                    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Update Alat</button>
+                    <div class="flex items-center justify-between">
+                            <a href="{{ route('alats.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                Batal
+                            </a>
+                            <button type="submit" class="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline border-2">
+                                Ubah
+                            </button>
+                        </div>
                 </form>
                 </div>
             </div>
