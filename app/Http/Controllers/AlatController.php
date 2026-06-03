@@ -35,10 +35,13 @@ class AlatController extends Controller
         //
         $request->validate([
             'nama_alat' => 'required|string|max:50',
-            'jumlah' => 'required|integer',
-            'deskripsi' => 'nullable|string',
+            'kategori_alat' => 'required|string|max:50',
+            'stok' => 'required|integer',
+            'kondisi_alat' => 'required|string|in:Baik,Rusak Ringan,Rusak Berat',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+
+        $path = null;
 
         if ($request->hasFile('gambar')) {
             $path = $request->file('gambar')->store('alats', 'public');
@@ -46,8 +49,9 @@ class AlatController extends Controller
 
         Alat::create([
             'nama_alat' => $request->nama_alat,
-            'jumlah' => $request->jumlah,
-            'deskripsi' => $request->deskripsi,
+            'kategori_alat' => $request->kategori_alat,
+            'stok' => $request->stok,
+            'kondisi_alat' => $request->kondisi_alat,
             'gambar' => $path,
         ]);
 
@@ -85,8 +89,9 @@ class AlatController extends Controller
 
         $request->validate([
             'nama_alat' => 'required|string|max:50',
-            'jumlah' => 'required|integer',
-            'deskripsi' => 'nullable|string',
+            'kategori_alat' => 'required|string|max:50',
+            'stok' => 'required|integer',
+            'kondisi_alat' => 'required|string|in:Baik,Rusak Ringan,Rusak Berat',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -103,9 +108,10 @@ class AlatController extends Controller
 
         $alat->update([
             'nama_alat' => $request->nama_alat,
-            'deskripsi' => $request->deskripsi,
-            'jumlah'    => $request->jumlah,
-            'gambar'    => $path,
+            'kategori_alat' => $request->kategori_alat,
+            'stok' => $request->stok,
+            'kondisi_alat' => $request->kondisi_alat,
+            'gambar' => $path,
             
         ]);
 
@@ -123,7 +129,7 @@ class AlatController extends Controller
     if ($alat->gambar && Storage::disk('public')->exists($alat->gambar)) {
         Storage::disk('public')->delete($alat->gambar);
     }
-    
+
     $alat->delete();
 
     return redirect()->route('alats.index')->with('success', 'Alat berhasil dihapus!');

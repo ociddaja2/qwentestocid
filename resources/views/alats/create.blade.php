@@ -22,20 +22,39 @@
                         <div class="mb-4">
                             <label for="nama_alat" class="block text-gray-700 font-bold mb-2">Nama Alat:</label>
 
-                            <input type="text" name="nama_alat" id="nama_alat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required> 
+                            <input type="text" name="nama_alat" id="nama_alat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-300" required> 
                         </div>
                         <div class="mb-4">
-                            <label for="jumlah" class="block text-gray-700 font-bold mb-2">Jumlah:</label>
+                            <label for="stok" class="block text-gray-700 font-bold mb-2">Stok:</label>
 
-                            <input type="number" name="jumlah" id="jumlah" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            <input type="number" name="stok" id="stok" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-300" required>
                         </div>
                         <div class="mb-4">
-                            <label for="Deskripsi" class="block text-gray-700 font-bold mb-2">Deskripsi:<span class="text-lg">(opsional)</span></label>
+                            <label for="kategori_alat" class="block text-gray-700 font-bold mb-2">Kategori alat:</label>
 
-                            <input type="text" name="deskripsi" id="deskripsi" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <!-- dropdown -->
+                            <select name="kategori_alat" id="kategori_alat" class=" block w-full rounded-md border-gray-300 shadow-sm"  required>
+                                <option value="">Pilih kategori alat</option>
+                                <option value="Elektronik">Elektronik</option>
+                                <option value="Prasarana Belajar">Prasarana Belajar</option>
+                                <option value="Barang Ekskul">Barang Ekskul</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
                         </div>
                         <div class="mb-4">
-                            <label for="Deskripsi" class="block text-gray-700 font-bold mb-2">Gambar:<span class="text-lg">(opsional)</span></label>
+                            <label for="kondisi_alat" class="block text-gray-700 font-bold mb-2">Kondisi alat:</label>
+
+                            <!-- dropdown -->
+                            <select name="kondisi_alat" id="kondisi_alat" class=" block w-full rounded-md border-gray-300 shadow-sm" required>
+                                <option value="">Pilih kondisi alat</option>
+                                <option value="Baik">Baik</option>
+                                <option value="Rusak Ringan">Rusak Ringan</option>
+                                <option value="Rusak Berat">Rusak Berat</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="gambar" class="block text-gray-700 font-bold mb-2">Gambar:<span class="text-lg">(opsional)</span></label>
 
                             <input type="file" name="gambar" id="gambar" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         </div>

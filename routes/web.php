@@ -25,7 +25,4 @@ Route::resource('alats', AlatController::class);
 // Peminjaman routes
 Route::resource('peminjamans', PeminjamanController::class);
 
-//view peminjamans
-Route::get('/peminjamans', [PeminjamanController::class, 'index'])->name('peminjamans.index');
-
 require __DIR__.'/auth.php';

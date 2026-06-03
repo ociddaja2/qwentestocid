@@ -4,6 +4,21 @@
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Data Peminjaman
             </h2>
+            <div class="space-x-2">
+            <a href="{{ route('peminjamans.create') }}"
+               class="inline-flex items-center gap-2 rounded-md bg-red-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Export PDF
+            </a>
+            <a href="{{ route('peminjamans.create') }}"
+               class="inline-flex items-center gap-2 rounded-md bg-green-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Export Excel
+            </a>
             <a href="{{ route('peminjamans.create') }}"
                class="inline-flex items-center gap-2 rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -11,6 +26,7 @@
                 </svg>
                 Tambah Peminjaman
             </a>
+            </div>
         </div>
     </x-slot>
 
@@ -29,7 +45,7 @@
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-3 text-left font-medium text-gray-500">#</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-500">No</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Nama Peminjam</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Kelas</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-500">Alat</th>
@@ -70,6 +86,10 @@
                             </td>
                             <td class="px-4 py-3 text-center">
                                 <div class="inline-flex items-center gap-2">
+                                    <a href="{{ route('peminjamans.show', $item->id) }}"
+                                       class="rounded px-2.5 py-1 text-xs font-medium text-amber-600 ring-1 ring-amber-300 hover:bg-amber-50 transition">
+                                        Detail
+                                    </a>
                                     <a href="{{ route('peminjamans.edit', $item->id) }}"
                                        class="rounded px-2.5 py-1 text-xs font-medium text-indigo-600 ring-1 ring-indigo-300 hover:bg-indigo-50 transition">
                                         Edit
@@ -96,12 +116,6 @@
                         @endforelse
                     </tbody>
                 </table>
-
-                @if($peminjamans->hasPages())
-                <div class="border-t border-gray-100 px-4 py-3">
-                    {{ $peminjamans->links() }}
-                </div>
-                @endif
             </div>
 
         </div>

@@ -10,10 +10,12 @@ class Peminjaman extends Model
     protected $table = 'peminjamans';
 
     protected $fillable = [
-        'nama_peminjam',
-        'alat_id',
+        'id_user',
+        'id_alat',
         'tanggal_pinjam',
         'tanggal_kembali',
+        'jumlah_pinjam',
+        'status',
     ];
 
     public function alat()

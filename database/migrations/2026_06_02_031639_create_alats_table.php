@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_alat');
             $table->string('kategori_alat');
             $table->integer('stok');
-            $table->string('kondisi_alat');
+            $table->string('kondisi_alat')->default('Baik');
             $table->string('gambar')->nullable();
             $table->timestamps();
         });

@@ -17,7 +17,7 @@
                             Kembali
                         </a>
                     </div>
-                    <form action="{{ route('alats.update', $alat->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+                    <form action="{{ route('alats.update', $alat->id_alat) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
                     @method('PUT')
                     <div class="mb-4">
@@ -25,12 +25,27 @@
                         <input type="text" name="nama_alat" value="{{ old('nama_alat', $alat->nama_alat) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700">Jumlah</label>
-                        <input type="number" name="jumlah" value="{{ old('jumlah', $alat->jumlah) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <label class="block text-sm font-medium text-gray-700">Stok</label>
+                        <input type="number" name="stok" value="{{ old('stok', $alat->stok) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700">Deskripsi</label>
-                        <input type="text" name="deskripsi" value="{{ old('deskripsi', $alat->deskripsi) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <label class="block text-sm font-medium text-gray-700">Kategori Alat</label>
+                        <select name="kategori_alat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            <option value="">Pilih kondisi alat</option>
+                            <option value="Elektronik" {{ old('kategori_alat', $alat->kategori_alat) == 'Elektronik' ? 'selected' : '' }}>Elektronik</option>
+                            <option value="Prasarana Belajar" {{ old('kategori_alat', $alat->kategori_alat) == 'Prasarana' ? 'selected' : '' }}>Prasarana Belajar</option>
+                            <option value="Barang Ekskul" {{ old('kategori_alat', $alat->kategori_alat) == 'Barang Ekskul' ? 'selected' : '' }}>Barang Ekskul</option>
+                            <option value="Lainnya" {{ old('kategori_alat', $alat->kategori_alat) == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Kondisi Alat</label>
+                        <select name="kondisi_alat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            <option value="">Pilih kondisi alat</option>
+                            <option value="Baik" {{ old('kondisi_alat', $alat->kondisi_alat) == 'Baik' ? 'selected' : '' }}>Baik</option>
+                            <option value="Rusak Ringan" {{ old('kondisi_alat', $alat->kondisi_alat) == 'Rusak Ringan' ? 'selected' : '' }}>Rusak Ringan</option>
+                            <option value="Rusak Berat" {{ old('kondisi_alat', $alat->kondisi_alat) == 'Rusak Berat' ? 'selected' : '' }}>Rusak Berat</option>
+                        </select>
                     </div>
                     
 
