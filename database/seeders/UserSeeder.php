@@ -15,9 +15,13 @@ class UserSeeder extends Seeder
     {
         //
         User::create([
-            'name' => 'Ocid',
+            'nama_peminjam' => 'Ocid',
             'email' => 'ocid@email.com',
+            'kelas' => 'XII RPL 1',
+            'jurusan' => 'RPL',
+            'no_hp' => '081234567890',
             'password' => bcrypt('password'),
+            'role' => 'admin',
         ]);  
     }
 }

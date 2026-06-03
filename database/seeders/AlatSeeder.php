@@ -16,8 +16,9 @@ class AlatSeeder extends Seeder
         //
         Alat::create([
             'nama_alat' => 'Laptop',
-            'jumlah' => 10,
-            'deskripsi' => 'Laptop untuk keperluan presentasi dan pekerjaan kantor.',
+            'kategori_alat' => 'Elektronik',
+            'stok' => 10,
+            'kondisi_alat' => 'Baik',
             'gambar' => 'laptop.jpg',
         ]);
     }

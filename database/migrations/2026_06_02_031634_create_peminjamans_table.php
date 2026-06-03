@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_alat');
-            $table->string('nama_peminjam');
-            $table->string('kelas');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali')->nullable();
+            $table->integer('jumlah_pinjam');
+            $table->string('status');
+
             $table->timestamps();
         });
     }
