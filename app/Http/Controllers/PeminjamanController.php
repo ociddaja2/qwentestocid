@@ -88,9 +88,8 @@ class PeminjamanController extends Controller
     public function update(Request $request, string $id)
     {
         $peminjaman = Peminjaman::findOrFail($id);
-
+        
         $request->validate([
-            'id_user' => 'required|exists:users,id',
             'id_alat' => 'required|exists:alats,id_alat',
             'jumlah_pinjam' => 'required|integer|min:1',
             'tanggal_pinjam' => 'required|date',

@@ -116,6 +116,7 @@
                                        class="rounded px-2.5 py-1 text-xs font-medium text-indigo-600 ring-1 ring-indigo-300 hover:bg-indigo-50 transition">
                                         Edit
                                     </a>
+                                    @if($item->status == 'dikembalikan')
                                     <form action="{{ route('peminjamans.destroy', $item->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Hapus data ini?')">
@@ -126,6 +127,7 @@
                                             Hapus
                                         </button>
                                     </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
