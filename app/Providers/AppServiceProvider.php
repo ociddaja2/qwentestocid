@@ -12,6 +12,13 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+
+        //vercel
+        if (env('VERCEL_JOB_ID') || env('NOW_REGION')) {
+        $this->app->bind('path.public', function () {
+            return base_path('public');
+        });
+    }
     }
 
     /**
