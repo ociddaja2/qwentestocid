@@ -12,26 +12,11 @@
                 <div class="p-6">
                     <div class="flex items-center justify-between">
                         <h2 class="text-2xl font-bold">Edit Data Peminjaman</h2>
-                        <a href="{{ route('peminjamans.index') }}" class="underline">
-                            Kembali
-                        </a>
                     </div>
 
                     <form action="{{ route('peminjamans.update', $peminjaman->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="mb-4">
-                            <label for="id_user" class="block text-gray-700 font-bold mb-2">Peminjam:</label>
-                            <select name="id_user" id="id_user" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                                <option value="">Pilih Peminjam</option>
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}" {{ old('id_user', $peminjaman->id_user) == $user->id ? 'selected' : '' }}>
-                                        {{ $user->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
                         <div class="mb-4">
                             <label for="id_alat" class="block text-gray-700 font-bold mb-2">Alat:</label>
                             <select name="id_alat" id="id_alat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>

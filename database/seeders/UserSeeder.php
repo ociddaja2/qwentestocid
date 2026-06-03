@@ -25,9 +25,29 @@ class UserSeeder extends Seeder
         ]);
         
         User::create([
-            'nama_peminjam' => 'Rizky',
-            'email' => 'riskilovlov@gmail.com',
-            'kelas' => 'XII RPL 1',
+            'nama_peminjam' => 'Ahmad Fauzan(user)',
+            'email' => 'faujan@gmail.com',
+            'kelas' => 'XI PPLG 1',
+            'jurusan' => 'RPL',
+            'no_hp' => '081234567890',
+            'password' => bcrypt('password'),
+            'role' => 'user',
+        ]);
+
+        User::create([
+            'nama_peminjam' => 'Ricky Pratama(user)',
+            'email' => 'riki@gmail.com',
+            'kelas' => 'XII RPL 2',
+            'jurusan' => 'RPL',
+            'no_hp' => '081234567890',
+            'password' => bcrypt('password'),
+            'role' => 'user',
+        ]);
+
+        User::create([
+            'nama_peminjam' => 'Dinda Putri(user)',
+            'email' => 'daaa@gmail.com',
+            'kelas' => 'XII RPL 2',
             'jurusan' => 'RPL',
             'no_hp' => '081234567890',
             'password' => bcrypt('password'),

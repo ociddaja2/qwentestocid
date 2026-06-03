@@ -15,11 +15,27 @@ class AlatSeeder extends Seeder
     {
         //
         Alat::create([
-            'nama_alat' => 'Laptop',
-            'kategori_alat' => 'Elektronik',
+            'nama_alat' => 'Laptop Asus',
+            'kategori_alat' => 'Laptop',
             'stok' => 10,
             'kondisi_alat' => 'Baik',
             'gambar' => 'laptop.jpg',
+        ]);
+
+        Alat::create([
+            'nama_alat' => 'Mouse Logitech',
+            'kategori_alat' => 'Aksesoris',
+            'stok' => 15,
+            'kondisi_alat' => 'Baik',
+            'gambar' => 'proyektor.jpg',
+        ]);
+
+        Alat::create([
+            'nama_alat' => 'Mekanikal Keyboard',
+            'kategori_alat' => 'Aksesoris',
+            'stok' => 5,
+            'kondisi_alat' => 'Baik',
+            'gambar' => 'proyektor.jpg',
         ]);
     }
 }

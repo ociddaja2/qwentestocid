@@ -28,10 +28,9 @@
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700">Kategori Alat</label>
                         <select name="kategori_alat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-                            <option value="">Pilih kondisi alat</option>
-                            <option value="Elektronik" {{ old('kategori_alat', $alat->kategori_alat) == 'Elektronik' ? 'selected' : '' }}>Elektronik</option>
-                            <option value="Prasarana Belajar" {{ old('kategori_alat', $alat->kategori_alat) == 'Prasarana' ? 'selected' : '' }}>Prasarana Belajar</option>
-                            <option value="Barang Ekskul" {{ old('kategori_alat', $alat->kategori_alat) == 'Barang Ekskul' ? 'selected' : '' }}>Barang Ekskul</option>
+                            <option value="">Pilih kategori alat</option>
+                            <option value="Laptop" {{ old('Laptop', $alat->kategori_alat) == 'Laptop' ? 'selected' : '' }}>Laptop</option>
+                            <option value="Aksesoris" {{ old('Aksesoris', $alat->kategori_alat) == 'Aksesoris' ? 'selected' : '' }}>Aksesoris</option>
                             <option value="Lainnya" {{ old('kategori_alat', $alat->kategori_alat) == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                         </select>
                     </div>

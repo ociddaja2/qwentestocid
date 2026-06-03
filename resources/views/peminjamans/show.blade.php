@@ -19,7 +19,7 @@
                     <div class="space-y-4">
                         <div class="border-b border-gray-100 pb-4">
                             <span class="block text-sm text-gray-500">Peminjam</span>
-                            <span class="block text-lg font-medium text-gray-900">{{ $peminjaman->user->name ?? '-' }}</span>
+                            <span class="block text-lg font-medium text-gray-900">{{ $peminjaman->user->nama_peminjam ?? '-' }}</span>
                         </div>
 
                         <div class="border-b border-gray-100 pb-4">

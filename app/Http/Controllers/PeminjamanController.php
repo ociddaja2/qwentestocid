@@ -7,20 +7,38 @@ use App\Models\Peminjaman;
 use App\Models\Alat;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PeminjamanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $peminjamans = Peminjaman::with(['user', 'alat'])->get();
-        return view('peminjamans.index', compact('peminjamans'));
-    }
+        // Memulai query dengan relasi untuk menghindari N+1 problem
+        $query = Peminjaman::with(['user', 'alat']);
 
-    public function create()
-    {
-        $users = User::all();
-        $alats = Alat::all();
-        return view('peminjamans.create', compact('users', 'alats'));
+        // Filter berdasarkan status (Dipinjam / Dikembalikan)
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // Filter berdasarkan kategori alat menggunakan whereHas
+        if ($request->filled('kategori')) {
+            $query->whereHas('alat', function ($q) use ($request) {
+                $q->where('kategori', $request->kategori);
+            });
+        }
+
+        // Eksekusi query (bisa gunakan get() atau paginate())
+        $peminjamans = $query->latest()->get();
+
+        return view('peminjamans.index', compact('peminjamans'));
+        }
+
+        public function create()
+        {
+            $users = User::all();
+            $alats = Alat::all();
+            return view('peminjamans.create', compact('users', 'alats'));
     }
 
     public function store(Request $request)
@@ -37,6 +55,9 @@ class PeminjamanController extends Controller
         if ($request->jumlah_pinjam > $alat->stok) {
             return back()->withErrors(['jumlah_pinjam' => 'Jumlah pinjam melebihi stok yang tersedia.'])->withInput();
         }
+
+        // Kurangi stok alat yang dipinjam
+        $alat->decrement('stok', $request->jumlah_pinjam);
 
         Peminjaman::create([
             'id_user' => auth()->id(),
@@ -84,8 +105,6 @@ class PeminjamanController extends Controller
         }
 
         $peminjaman->update([
-            'id_user' => $request->id_user,
-            'id_alat' => $request->id_alat,
             'jumlah_pinjam' => $request->jumlah_pinjam,
             'tanggal_pinjam' => $request->tanggal_pinjam,
             'tanggal_kembali' => $request->tanggal_kembali,
@@ -101,5 +120,15 @@ class PeminjamanController extends Controller
         $peminjaman->delete();
 
         return redirect()->route('peminjamans.index')->with('success', 'Data peminjaman berhasil dihapus.');
+    }
+
+    public function exportPdf()
+    {
+        $peminjamans = Peminjaman::with(['user', 'alat'])->get();
+
+        $pdf = Pdf::loadView('peminjamans.pdf', compact('peminjamans'))
+                ->setPaper('a4', 'landscape');
+
+        return $pdf->download('laporan-peminjaman.pdf');
     }
 }

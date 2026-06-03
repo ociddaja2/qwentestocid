@@ -32,9 +32,8 @@
                             <!-- dropdown -->
                             <select name="kategori_alat" id="kategori_alat" class=" block w-full rounded-md border-gray-300 shadow-sm"  required>
                                 <option value="">Pilih kategori alat</option>
-                                <option value="Elektronik">Elektronik</option>
-                                <option value="Prasarana Belajar">Prasarana Belajar</option>
-                                <option value="Barang Ekskul">Barang Ekskul</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Aksesoris">Aksesoris</option>
                                 <option value="Lainnya">Lainnya</option>
                             </select>
                         </div>
