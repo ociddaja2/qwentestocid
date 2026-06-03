@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PeminjamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
@@ -28,5 +29,8 @@ Route::resource('alats', AlatController::class);
 
 // Peminjaman routes
 Route::resource('peminjamans', PeminjamanController::class);
+
+// Peminjam routes
+Route::resource('peminjams', PeminjamController::class);
 
 require __DIR__.'/auth.php';
